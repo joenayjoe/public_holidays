@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org" >
+<head th:replace="fragments/meta::meta-tags"></head>
+<body>
+    <h1 class="title">Search Public Holidays</h1>
+    <div th:replace="fragments/search::search">Search Holiday</div>
+    <hr />
+    <table class="search-result table">
+        <thead>
+            <tr>
+                <th scope="col">Date</th>
+                <th scope="col">Name</th>
+                <th scope="col">Description</th>
+                <th scope="col">Type</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:if="${#lists.isEmpty(holidays)}">
+                <td colspan="4">No Holidays</td>
+            </tr>
+            <tr th:each="holiday : ${holidays}">
+                <td><span th:text="${holiday.date}"> 2021-05-11 </span></td>
+                <td><span th:text="${holiday.name}"> Holiday Name </span></td>
+                <td><span th:text="${holiday.description}"> Holiday Description </span></td>
+                <td><span th:text="${holiday.type}"> Holiday Types </span></td>
+        </tbody>
+    </table>
+</body>
+</html>

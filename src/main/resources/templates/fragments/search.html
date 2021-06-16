@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org" >
+
+<body>
+<div class="search-container" th:fragment="search">
+    <form class="search-form" action="#" th:action="@{/public_holidays}" th:object="${requestData}" method="post">
+        <select class="country-select-box form-control-lg" th:field="*{country}">
+            <option selected="selected" value="">Select a country ...</option>
+            <option class="country-option" th:each="i : ${countries}" th:value="${i.iso_3166}" th:text="${i.name}" th:selected="${i.iso_3166 == requestData.country}">Country Name</option>
+        </select>
+        <button class="btn btn-primary" type="submit">Search</button>
+    </form>
+</div>
+</body>
+</html>
